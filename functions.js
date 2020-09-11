@@ -1,5 +1,12 @@
 "use strict"
 
+const input = document.getElementById("weight");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) { 
+        handleButton();
+    }
+})
+
 function resetInput() {
     document.getElementById("weight").style.backgroundColor = "#ffffff";
 }
