@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>
-            Warm up calc
+            Big Lift Calc
         </title>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Working Set Percentage Calculator</h1>
+        <h1>Warm Up Calculator</h1>
         <form>
-            <label>Working set weight</label>
-            <input type="number" id="weight">
-            <input type="button" onclick="handleButton()" value="Calc">
+            <label for="weight">Working set weight:</label>
+            <input type="number" id="weight" name="weight" onclick="resetInput()">
+            <br>
+            <br>
+            <label for="sets">Number of warm up sets:</label>
+            <select id="sets" name="sets">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+            <br>
+            <input type="button" onclick="handleButton()" value="Calc"></input>
         </form>
+        <br>
         <br>
         <table>
             <thead id="tableHead">
