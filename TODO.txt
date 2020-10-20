@@ -1,0 +1,1 @@
+add ability to hit enter on mobile when inside input of weight to calculate
