@@ -18,23 +18,25 @@
         <input type="number" id="weight" name="weight" onclick="resetInput()">
         <br>
         <br>
-        <label for="barbell">Barbell:</label>
-        <select id="barbell" name="barbell">
-            <option value="false">Not barbell</option>
-            <option value="true">Barbell</option>
+        <label for="exercise">Exercise:</label>
+        <select id="exercise" name="exercise">
+            <option value="barbell">Barbell</option>
+            <option value="dumbbell/machine" selected="selected">Dumbbell/Machine</option>
+            <option value="leg_press">Leg Press</option>
         </select>
         <br>
         <br>
         <label for="increment">Increment of weight:</label>
         <select id="increment" name="increment">
-            <option value="5">5</option>
+            <option value="5" selected="selected">5</option>
             <option value="10">10</option>
         </select>
         <br>
         <br>
         <label for="sets">Number of warm up sets:</label>
         <select id="sets" name="sets">
-            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="3" selected="selected">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
         </select>

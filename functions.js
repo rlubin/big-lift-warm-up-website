@@ -15,20 +15,19 @@ function resetInput() {
 function handleButton() {
   const weight = document.getElementById("weight").value;
   const sets = document.getElementById("sets").value;
-  const barbell =
-    document.getElementById("barbell").value == "true" ? true : false;
+  const exercise = document.getElementById("exercise").value;
   const increment = document.getElementById("increment").value;
   document.getElementById("weight").value = "";
   if (weight === "") {
     document.getElementById("weight").style.backgroundColor = "#ff0000";
     return;
   }
-  if (Number(weight) < 45 && barbell === true) {
+  if (Number(weight) < 45 && exercise === "barbell") {
     document.getElementById("weight").style.backgroundColor = "#ff0000";
     return;
   }
   const roundedWeight = Math.round(weight / 5) * 5;
-  calcScheme(roundedWeight, calcPercents(sets), increment, barbell);
+  calcScheme(roundedWeight, calcPercents(sets), increment, exercise);
 }
 
 function calcPercents(sets) {
@@ -41,41 +40,49 @@ function calcPercents(sets) {
   return roundedPercents;
 }
 
-function calcScheme(weight, percents, increment, barbell) {
+function calcScheme(weight, percents, increment, exercise) {
   const reps = [10, 8, 6, 4, 2];
   const scheme = [];
   const pl = percents.length;
-  if (barbell === true) {
-    scheme.push(calcWeightAndReps(45, 0, 10, 5, true));
+  if (exercise === "barbell") {
+    scheme.push(calcWeightAndReps(45, 0, 10, 5, "barbell"));
   }
   for (let i = 0; i < pl; i++) {
     scheme.push(
-      calcWeightAndReps(weight, percents[i], reps[i], increment, barbell)
+      calcWeightAndReps(weight, percents[i], reps[i], increment, exercise)
     );
   }
-  scheme.push(calcWeightAndReps(weight, 100, "8x3", increment, barbell));
+  scheme.push(calcWeightAndReps(weight, 100, "8x3", increment, exercise));
   displayTable(scheme);
 }
 
-function calcWeightAndReps(weight, percent, reps, increment, barbell) {
+function calcWeightAndReps(weight, percent, reps, increment, exercise) {
   let curWt =
     percent == 0
       ? 45
       : Math.round((weight * (percent / 100)) / increment) * increment;
-  if (barbell === true) {
+  if (exercise === "barbell") {
     return {
       percent: percent,
       weight: curWt,
       weightPerSide: (curWt - 45) / 2,
       reps: reps,
     };
+  } else if (exercise == "leg_press") {
+    return {
+      percent: percent,
+      weight: curWt,
+      weightPerSide: curWt / 2,
+      reps: reps,
+    };
+  } else {
+    return {
+      percent: percent,
+      weight: curWt,
+      weightPerSide: curWt,
+      reps: reps,
+    };
   }
-  return {
-    percent: percent,
-    weight: curWt,
-    weightPerSide: curWt,
-    reps: reps,
-  };
 }
 
 function displayTable(scheme) {
