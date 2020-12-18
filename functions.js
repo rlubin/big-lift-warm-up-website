@@ -52,7 +52,7 @@ function calcScheme(weight, percents, increment, exercise) {
       calcWeightAndReps(weight, percents[i], reps[i], increment, exercise)
     );
   }
-  scheme.push(calcWeightAndReps(weight, 100, "8x3", increment, exercise));
+  scheme.push(calcWeightAndReps(weight, 100, "5", increment, exercise));
   displayTable(scheme);
 }
 
@@ -68,13 +68,13 @@ function calcWeightAndReps(weight, percent, reps, increment, exercise) {
       weightPerSide: (curWt - 45) / 2,
       reps: reps,
     };
-  } else if (exercise == "leg_press") {
-    return {
-      percent: percent,
-      weight: curWt,
-      weightPerSide: curWt / 2,
-      reps: reps,
-    };
+  // } else if (exercise == "leg_press") {
+  //   return {
+  //     percent: percent,
+  //     weight: curWt,
+  //     weightPerSide: curWt / 2,
+  //     reps: reps,
+  //   };
   } else {
     return {
       percent: percent,
